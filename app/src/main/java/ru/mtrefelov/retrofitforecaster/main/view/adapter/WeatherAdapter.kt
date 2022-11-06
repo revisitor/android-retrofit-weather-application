@@ -4,17 +4,17 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import ru.mtrefelov.retrofitforecaster.R
-import ru.mtrefelov.retrofitforecaster.main.model.entity.ForecastDetail
+import ru.mtrefelov.retrofitforecaster.main.model.core.Forecast
 
-class WeatherAdapter : ListAdapter<ForecastDetail, WeatherViewHolder>(WeatherItemCallback()) {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WeatherViewHolder {
+class WeatherAdapter : ListAdapter<Forecast, WeatherItem>(WeatherItemCallback()) {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WeatherItem {
         val inflater = LayoutInflater.from(parent.context)
         return if (viewType == HOT_WEATHER_TYPE) {
             val view = inflater.inflate(R.layout.hot_weather_item, parent, false)
-            HotWeatherViewHolder(view)
+            HotWeatherItem(view)
         } else {
             val view = inflater.inflate(R.layout.cold_weather_item, parent, false)
-            ColdWeatherViewHolder(view)
+            ColdWeatherItem(view)
         }
     }
 
@@ -23,14 +23,14 @@ class WeatherAdapter : ListAdapter<ForecastDetail, WeatherViewHolder>(WeatherIte
         private const val COLD_WEATHER_TYPE = 1
     }
 
-    override fun onBindViewHolder(holder: WeatherViewHolder, position: Int) {
-        val forecast: ForecastDetail = getItem(position)
+    override fun onBindViewHolder(holder: WeatherItem, position: Int) {
+        val forecast = getItem(position)
         holder.bind(forecast)
     }
 
     override fun getItemViewType(position: Int): Int {
-        val forecast: ForecastDetail = getItem(position)
-        return if (forecast.temperatureInfo.temperature > 0) {
+        val forecast = getItem(position)
+        return if (forecast.temperature > 0) {
             HOT_WEATHER_TYPE
         } else {
             COLD_WEATHER_TYPE

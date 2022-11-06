@@ -1,15 +1,16 @@
 package ru.mtrefelov.retrofitforecaster.main
 
 import ru.mtrefelov.retrofitforecaster.base.BaseContract
-import ru.mtrefelov.retrofitforecaster.main.model.entity.ForecastDetail
+import ru.mtrefelov.retrofitforecaster.main.model.core.Forecast
 
 interface MainContract {
     interface Presenter : BaseContract.Presenter {
-        fun onViewCreated()
+        fun onFirstTimeCreated()
+        fun onRecreated()
     }
 
     interface View : BaseContract.View<Presenter> {
         fun setToolbarTitle(title: CharSequence)
-        fun setForecastDetails(forecastDetails: List<ForecastDetail>)
+        fun setForecastDetails(forecasts: List<Forecast>)
     }
 }

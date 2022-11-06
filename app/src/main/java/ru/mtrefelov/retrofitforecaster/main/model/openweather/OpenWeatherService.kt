@@ -1,9 +1,7 @@
-package ru.mtrefelov.retrofitforecaster.main.model.api
+package ru.mtrefelov.retrofitforecaster.main.model.openweather
 
 import retrofit2.Call
 import retrofit2.http.*
-
-import ru.mtrefelov.retrofitforecaster.main.model.entity.WeatherResponse
 
 internal interface OpenWeatherService {
     @Headers("Accept: application/json")

@@ -1,4 +1,4 @@
-package ru.mtrefelov.retrofitforecaster.main.model.entity
+package ru.mtrefelov.retrofitforecaster.main.model.openweather
 
 import com.squareup.moshi.Json
 
