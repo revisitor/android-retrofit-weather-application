@@ -3,17 +3,17 @@ package ru.mtrefelov.retrofitforecaster.main.view.adapter
 import android.view.View
 import android.widget.TextView
 import ru.mtrefelov.retrofitforecaster.R
-import ru.mtrefelov.retrofitforecaster.main.model.entity.ForecastDetail
+import ru.mtrefelov.retrofitforecaster.main.model.core.Forecast
 
-class ColdWeatherViewHolder(root: View) : WeatherViewHolder(root) {
+class ColdWeatherItem(root: View) : WeatherItem(root) {
     override val datetimeTextView: TextView = root.findViewById(R.id.cold_weather_datetime)
     override val temperatureTextView: TextView = root.findViewById(R.id.cold_weather_temperature)
 
-    override fun bind(forecastDetail: ForecastDetail) {
-        if (forecastDetail.temperatureInfo.temperature <= 0) {
-            super.bind(forecastDetail)
-        } else {
+    override fun bind(forecast: Forecast) {
+        if (forecast.temperature > 0) {
             throw IllegalArgumentException("temperature > 0")
         }
+
+        super.bind(forecast)
     }
 }
