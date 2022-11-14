@@ -1,6 +1,9 @@
-package ru.mtrefelov.retrofitforecaster
+package ru.mtrefelov.forecaster.app
 
 import android.app.Application
+
+import ru.mtrefelov.forecaster.BuildConfig
+
 import timber.log.Timber
 
 class WeatherApplication : Application() {
